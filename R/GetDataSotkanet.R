@@ -54,7 +54,7 @@
 #' @keywords utilities
 #' @export
 GetDataSotkanet <- function(indicators = NULL, 
-                            years = 1991:2015, 
+                            years = NULL, 
                             genders = c("total"), 
                             regions = NULL, 
                             region.category = NULL,
@@ -64,6 +64,11 @@ GetDataSotkanet <- function(indicators = NULL,
     message("Parameter 'indicators' is NULL. Please provide at least one indicator.")
     return(invisible(NULL))
   }
+  
+  if (is.null(years)){
+    message("Parameter 'years' is NULL. Please provide year(s) as vector.")
+    return(invisible(NULL))
+  }  
 
   # List all indicators in Sotkanet database
   sotkanet_indicators <- SotkanetIndicators(id = indicators, 
